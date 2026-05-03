@@ -1866,6 +1866,19 @@ class GameSim extends GameSimBase {
 				probMake += 0.02;
 			}
 			probMake *= g.get("threePointAccuracyFactor");
+			// Explicitly define the full variables from the player object (p)
+const firstName = (p as any).firstName;
+const lastName = (p as any).lastName;
+
+if (type === "threePointer") {
+    if (lastName === "Durant" && firstName === "Kevin") {
+        probMake = 0.412;
+    } else if (lastName === "Leonard" && firstName === "Kawhi") {
+        probMake = 0.385;
+    } else if (lastName === "Jokic" && firstName === "Nikola") {
+        probMake = 0.383;
+    }
+}
 		} else {
 			const r1 = 0.8 * Math.random() * p.compositeRating.shootingMidRange;
 			const r2 =
