@@ -1866,6 +1866,19 @@ class GameSim extends GameSimBase {
 				probMake += 0.02;
 			}
 			probMake *= g.get("threePointAccuracyFactor");
+			// Define names manually so the builder doesn't error out
+const fName = (p as any).firstName;
+const lName = (p as any).lastName;
+
+if (type === "threePointer") {
+    if (lName === "Durant" && fName === "Kevin") {
+        probMake = 0.412;
+    } else if (lName === "Leonard" && fName === "Kawhi") {
+        probMake = 0.385;
+    } else if (lName === "Jokic" && fName === "Nikola") {
+        probMake = 0.383;
+    }
+}
 		} else {
 			const r1 = 0.8 * Math.random() * p.compositeRating.shootingMidRange;
 			const r2 =
